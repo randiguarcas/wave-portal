@@ -75,7 +75,6 @@ function App() {
         const account = accounts[0];
         console.log("Found an authorized account:", account);
         setCurrentAccout(account);
-        console.log(currentAccount);
       } else {
         console.log("No authorized account found");
       }
@@ -97,15 +96,17 @@ function App() {
           Wave at me
         </button>
         <br></br>
-        <button className="waveButton" onClick={connectWallet}>
-          Connect Metamask &nbsp;
-          <img
-            src="https://emoji.gg/assets/emoji/1385-metamask.png"
-            width="30px"
-            height="30px"
-            alt="metamask"
-          />
-        </button>
+        {!currentAccount && (
+          <button className="waveButton" onClick={connectWallet}>
+            Connect Metamask &nbsp;
+            <img
+              src="https://emoji.gg/assets/emoji/1385-metamask.png"
+              width="30px"
+              height="30px"
+              alt="metamask"
+            />
+          </button>
+        )}
       </div>
     </div>
   );
