@@ -60,7 +60,7 @@ function App() {
   };
 
   useEffect(() => {
-    const checkIfWalletIsConnected = async () => {
+    async function checkIfWalletIsConnected() {
       const { ethereum } = window;
 
       if (!ethereum) {
@@ -79,7 +79,7 @@ function App() {
       } else {
         console.log("No authorized account found");
       }
-    };
+    }
 
     checkIfWalletIsConnected();
   }, []);
