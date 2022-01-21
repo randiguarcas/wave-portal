@@ -9,6 +9,9 @@ function App() {
   const contractAddress = "0x36C33E5807B3D5f4E47C44838D96fF676EBC018d";
   const contractABI = abi.abi;
 
+  const dappUrl = "wave-portal-bay.vercel.app/";
+  const metamaskAppDeepLink = "https://metamask.app.link/dapp/" + dappUrl;
+
   const connectWallet = async () => {
     try {
       const { ethereum } = window;
@@ -61,12 +64,6 @@ function App() {
 
   const isMobileDevice = () => {
     return "ontouchstart" in window || "onmsgesturechange" in window;
-  };
-
-  const connectMobileWallet = () => {
-    const dappUrl = "wave-portal-bay.vercel.app/";
-    const metamaskAppDeepLink = "https://metamask.app.link/dapp/" + dappUrl;
-    console.log(dappUrl, metamaskAppDeepLink);
   };
 
   useEffect(() => {
@@ -129,15 +126,17 @@ function App() {
         )}
 
         {!currentAccount && isMobileDevice() && (
-          <button className="waveButton" onClick={connectMobileWallet}>
-            Connect Metamask App &nbsp;
-            <img
-              src="https://emoji.gg/assets/emoji/1385-metamask.png"
-              width="30px"
-              height="30px"
-              alt="metamask"
-            />
-          </button>
+          <a href={metamaskAppDeepLink}>
+            <button className="waveButton">
+              Connect Metamask &nbsp;
+              <img
+                src="https://emoji.gg/assets/emoji/1385-metamask.png"
+                width="30px"
+                height="30px"
+                alt="metamask"
+              />
+            </button>
+          </a>
         )}
       </div>
     </div>
