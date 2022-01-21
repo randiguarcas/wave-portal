@@ -1,23 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
 
+const wave = () => {
+  alert(1)
+}
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="App-header">
+        <div>
+          🤖
+        </div>
+        <div className="bio">
+          I am bot and this is my first smart contract.
+        </div>
+        <button className="waveButton" onClick={wave}>
+          Wave at me
+        </button>
+      </div>
     </div>
   );
 }

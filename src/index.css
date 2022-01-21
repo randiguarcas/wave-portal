@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.bio {
+  padding: 20px;
+}
+
+.waveButton {
+  background-color: #fff;
+  color: black;
+  font-weight: 400;
+  border: none;
+  width: 30%;
+  height: 50px;
+  font-size: 22px;
+}
