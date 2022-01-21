@@ -25,3 +25,8 @@ code {
   height: 50px;
   font-size: 22px;
 }
+
+.waveButton img {
+  vertical-align: middle;
+  display: inline-block;
+}
