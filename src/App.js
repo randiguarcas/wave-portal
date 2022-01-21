@@ -24,6 +24,7 @@ function App() {
       const account = accounts[0];
       console.log("Found an authorized account:", account);
       setCurrentAccout(account);
+      console.log(currentAccount);
     } else {
       console.log("No authorized account found")
     }
