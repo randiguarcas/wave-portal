@@ -59,6 +59,16 @@ function App() {
     }
   };
 
+  const isMobileDevice = () => {
+    return "ontouchstart" in window || "onmsgesturechange" in window;
+  };
+
+  const connectMobileWallet = () => {
+    const dappUrl = "wave-portal-bay.vercel.app/";
+    const metamaskAppDeepLink = "https://metamask.app.link/dapp/" + dappUrl;
+    console.log(dappUrl, metamaskAppDeepLink);
+  };
+
   useEffect(() => {
     async function checkIfWalletIsConnected() {
       const { ethereum } = window;
@@ -71,13 +81,23 @@ function App() {
 
       const accounts = await ethereum.request({ method: "eth_accounts" });
 
-      if (accounts.length !== 0) {
+      if (accounts.length) {
         const account = accounts[0];
         console.log("Found an authorized account:", account);
         setCurrentAccout(account);
-      } else {
-        console.log("No authorized account found");
       }
+
+      if (isMobileDevice()) {
+        await connectWallet();
+      }
+
+      // if (accounts.length !== 0) {
+      //   const account = accounts[0];
+      //   console.log("Found an authorized account:", account);
+      //   setCurrentAccout(account);
+      // } else {
+      //   console.log("No authorized account found");
+      // }
     }
 
     checkIfWalletIsConnected();
@@ -96,9 +116,21 @@ function App() {
           Wave at me
         </button>
         <br></br>
-        {!currentAccount && (
+        {!currentAccount && !isMobileDevice() && (
           <button className="waveButton" onClick={connectWallet}>
             Connect Metamask &nbsp;
+            <img
+              src="https://emoji.gg/assets/emoji/1385-metamask.png"
+              width="30px"
+              height="30px"
+              alt="metamask"
+            />
+          </button>
+        )}
+
+        {!currentAccount && isMobileDevice() && (
+          <button className="waveButton" onClick={connectMobileWallet}>
+            Connect Metamask App &nbsp;
             <img
               src="https://emoji.gg/assets/emoji/1385-metamask.png"
               width="30px"
